@@ -1,0 +1,37 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    height: 670px;
+    background: linear-gradient(to bottom right,black, grey,black);
+}
+
+#spanlogin{
+    color: white;
+    font-family: Consolas;
+    font-size: 30px;
+    margin-left: 30%;
+}
+
+#logindiv{
+    margin-left: 40%;
+    margin-top: 15%;
+    width: 20%;
+    height: 30%;
+}
+
+#input{
+    padding: 20px;
+}
+#name{
+    padding: 20px;
+    margin-left: 0px;
+}
+#login{
+    margin-top: 7px;
+    padding: 10px;
+    width: 223px;
+}
+

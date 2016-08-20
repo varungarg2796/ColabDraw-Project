@@ -1,0 +1,5 @@
+1. Only 1 user gets added to the database while logging in
+
+2. Bootstrap doest not load when connected to server.. But gets loaded when opened locally
+
+ 

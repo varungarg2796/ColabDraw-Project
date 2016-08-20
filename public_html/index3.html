@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Canvas Try</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="jquery.js"></script>
+	<style type="text/css" media="screen">
+		#canvas{
+
+			position: absolute;
+			border:2px solid red;
+			left: 230px;
+		}
+
+		#color{
+			border-radius: 100px;
+			width: 200px;
+			height:50px;
+		}
+
+		#measurements{
+			position: relative;
+			height:160px;
+			width: 200px;
+			border:8px solid darkblue;
+			border-radius: 20px;
+			left: 0px;
+			top:0px;
+
+		}
+
+		#tools{
+			position: relative;
+			border:8px solid lightblue;
+			border-radius: 20px;
+			width:205px;
+			height: 250px;
+			left:0px;
+		}
+		.ins{
+			width: 50px;
+		}
+		.buttontools{
+			width:100px;
+			height: 50px;
+		}
+		#download{
+			width:200px;
+			height: 50px;
+        }
+        #main{
+            border: 2px solid blue;
+            height: 500px;
+            width: 400px;
+            margin-left: 850px;
+            margin-top: -440px;
+        }
+        #chatbox{
+
+        }
+        #element1{
+            position: absolute;
+           margin-top: 510px;
+        }
+        #chatmessage{
+            width: 320px;
+            height: 20px;
+        }
+
+	</style>
+</head>
+	<script src="jscolor.js"></script>
+<body>
+
+ <body>
+ <canvas onmousedown="draw(event)" style="margin:0;padding:0;" id="canvas"
+          class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}" width="590" height="500"></canvas> 
+<div id="tools">
+	
+ <button class="buttontools" type="" id="square" value="1"> Square</button> 
+ <button class="buttontools" type="" id="rectangle" value="2"> Rectangle</button>
+ <button class="buttontools" type="" id="circle" value="3"> Circle</button> 
+ <button class="buttontools" type="" id="triangle" value="4"> triangle</button>
+ <button class="buttontools" type="" id="eraser" value="5"> Eraser</button> 
+ <button class="buttontools" type="" id="reset" onclick="reset()" > Reset</button> 
+<button  id="color" class="jscolor {valueElement:'chosen-value', onFineChange:'setTextColor(this)'}">
+		Pick Shape color
+	</button>
+
+<a id="downloadLnk" download="YourFileName.jpg"><button id="download">Download as image</button></a>
+<br>
+</div>
+
+
+<div id="measurements">
+
+ <input type="number" class="ins" id="height" placeholder="height">-->Height of Rectangle </input><br>
+ <input type="number" class="ins" id="width" placeholder="width">--> Width of Rectangle</input><br>
+ <input type="number" class="ins" id="radius" placeholder="radius of circle">-->Radius of the circle</input><br>
+</div>
+<div id="main">
+ <div id="chatbox"></div>
+ <div id="element1">
+     <input type="text" id="chatmessage">
+     <button type="button" id="submitchat"> Send </button>
+ </div>
+</div>
+<script type="" src="script.js"></script>
+ <script src="main3.js"></script>
+</body>
+</html>

@@ -23,9 +23,7 @@ module.exports = {
     adduser: function ( user, cb ) {
         const conn = createConnection();
         conn.connect();
-        const queryString = "INSERT INTO AllUsers VALUES (" +
-            user.userid + ", " +
-            "'" + user.username + "' );";
+        const queryString = "INSERT INTO AllUsers (usernames) VALUES("+"'"+user.username+"'"+");";
         conn.query(queryString, function (err, result) {
             cb(result);
         });

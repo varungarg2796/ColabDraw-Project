@@ -6,7 +6,7 @@ const socket = io();
 
 $(function () {
 
-    const username = prompt("Enter username");
+    const username = localStorage.getItem('user');
 
     $('#submitchat').click(function () {
         console.log("Clicked on sent");

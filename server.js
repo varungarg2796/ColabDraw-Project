@@ -17,9 +17,21 @@ const io=socketio(server);
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.set('port',5000);
+app.set('port',3000);
 
 app.use('/', express.static('./public_html'));
+
+app.post('/login', function (req,res) {
+    console.log(req.body);
+    db.adduser({
+        username: req.body.username
+    }, function(result) {
+        res.redirect('./index3.html')
+
+    })
+    //save this to db
+    console.log("db run")
+})
 
 
 io.on('connection', function (socket) {
@@ -32,17 +44,7 @@ io.on('connection', function (socket) {
 });
 
 
-app.post('/adduser', function (req, res) {
-    //console.log(req.body);
-    db.adduser({
-        userid: req.body.userid,
-        username: req.body.username
-    }, function(result) {
-        res.send(result)
-    })
-});
-
-app.listen(app.get('port'),function(){
+server.listen(app.get('port'),function(){
     console.log('Server started on port:'+app.get('port'))
 });
 

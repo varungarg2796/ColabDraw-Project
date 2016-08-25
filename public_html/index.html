@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>ColabDraw</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/bootstrap-theme.css">
-    <script src="../js/bootstrap.js"></script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="bootstrap-theme.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <script src="bootstrap.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="http://yournodeserver/socket.io/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
 
     <link type="text/css" rel="stylesheet" href="style.css">
 
@@ -15,15 +19,13 @@
 <div id="logindiv">
     <span id="spanlogin">LOGIN</span>
     <div id="input">
-        <form action="index3.html">
-<input type="text" placeholder="Enter your name" id="name" required></input>
+        <form action="/login" method="post">
+<input type="text" placeholder="Enter your name" id="name" required name="username"></input>
             <button type="submit" class="btn btn-primary" id="login">Let me in!</button>
         </form>
 
 </div>
 </div>
 <script src="jquery.js"></script>
-<script src="main.js"></script>
-
 </body>
 </html>

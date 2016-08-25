@@ -9,6 +9,7 @@ $(function () {
     const username = prompt("Enter username");
 
     $('#submitchat').click(function () {
+        console.log("Clicked on sent");
         socket.emit('chat',
             {
                 user: username,
@@ -17,6 +18,7 @@ $(function () {
     });
 
     socket.on('chat', function (data) {
+        console.log("chat sent");
         $('#chatbox').append(data.user
             + ': ' + data.msg + '<br>')
     })

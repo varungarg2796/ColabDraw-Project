@@ -26,6 +26,17 @@
 
 </div>
 </div>
+
 <script src="jquery.js"></script>
+
+<script>
+    var userloggedin="";
+    $('#login').click(function () {
+        console.log("logged in");
+        userloggedin = $('#name').val();
+        localStorage.setItem('user',userloggedin);
+    });
+
+</script>
 </body>
 </html>

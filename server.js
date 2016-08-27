@@ -12,7 +12,7 @@ const db = require('./dbhandler');
 const app=express();
 const server=http.Server(app);
 const io=socketio(server);
-
+var line_history = [];
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -40,8 +40,30 @@ io.on('connection', function (socket) {
 
         io.emit('chat', data)
     })
+    socket.on('drawSquare',function(data){
+        console.log(data);
+        io.emit('drawSquare',data);
+    });
+
+    socket.on('drawRect',function(data){
+        console.log(data);
+        io.emit('drawRect',data);
+    });
+    socket.on('drawCircle',function(data){
+        console.log(data);
+        io.emit('drawCircle',data);
+    });
+    socket.on('drawTriangle',function(data){
+        console.log(data);
+        io.emit('drawTriangle',data);
+    });
+
+     
+
 
 });
+
+
 
 
 server.listen(app.get('port'),function(){

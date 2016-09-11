@@ -3,6 +3,13 @@ var canvas;
 var context;
 var selectedShape=null;
 var color="";
+var recthei="";
+var rectwid="";
+var cirRad="";
+var sqSide='';
+var triHei='';
+
+
 
 
 $(function () {
@@ -35,7 +42,7 @@ $(function () {
     socket.on('drawSquare',function(data){
         console.log(data);
         context.fillStyle = data.colour;
-        context.fillRect (data.positionx, data.positiony, 400, 400);   
+        context.fillRect (data.positionx, data.positiony, data.sq, data.sq);   
     })
 
     socket.on('drawRect',function(data){
@@ -56,29 +63,53 @@ $(function () {
         context.fillStyle = data.colour;
         context.beginPath();
         context.moveTo(data.positionx,data.positiony);
-        context.lineTo(data.positionx+25,data.positiony+25);
-        context.lineTo(data.positionx-25,data.positiony+25);
+        context.lineTo(data.positionx+data.tri,data.positiony+data.tri);
+        context.lineTo(data.positionx-data.tri,data.positiony+data.tri);
         context.fill()
 
     });
 
     //here
    // get canvas element and create context
-   
-    $("#a_slider").slider({
-        orientation: "horizontal",
-        range: false,
-        min: 0,
-        max: 1,
-        value: 0,
-        step: .01,
-        animate: true,
-        slide: function (event, ui) {
-            $("#a_field").val(ui.value);
-            $("#a").text(ui.value);
-        }
+   //Rectangle Height and Width Slider
+    $('#rectangleHeight').on('change', function(){
+    $('#rhf').val($('#rectangleHeight').val());
+    recthei=$('#rectangleHeight').val();
     });
 
+    $('#rectangleWidth').on('change', function(){
+    $('#rwf').val($('#rectangleWidth').val());
+    rectwid=$('#rectangleWidth').val();
+    });
+    //Rectangle Height and Width Slider
+   
+    //Radius of the circle
+   $('#circleRadius').on('change', function(){
+    $('#cr').val($('#circleRadius').val());
+    rectwid=$('#circleRadius').val();
+    cirRad=$('#circleRadius').val();
+    });
+   //Radius of the Circle
+   
+   //Square Side
+   
+   $('#squareSide').on('change', function(){
+    $('#ss').val($('#squareSide').val());
+    rectwid=$('#squareSide').val();
+    sqSide=$('#squareSide').val();
+    });
+   //Square Side
+   
+   //Triangle Height
+   $('#hbTriangle').on('change', function(){
+    $('#hb').val($('#hbTriangle').val());
+    rectwid=$('#hbTriangle').val();
+    triHei=$('#hbTriangle').val();
+    });
+   //Triangle Height
+
+
+   console.log(recthei);
 
 
     //here
@@ -91,8 +122,9 @@ function eraser(event){
 	var pos = getMousePos(canvas, event);
     posx = pos.x;
     posy = pos.y;
-
-    var height=$('#height').val();
+        
+    var height=$("#a_field").val(ui.value);
+    console.log(height);
     var width=$('#width').val();
     context.fillStyle = "white";
     context.fillRect (posx, posy, height, width);
@@ -101,8 +133,10 @@ function drawSquare(event){
     var pos = getMousePos(canvas, event);
     posx = pos.x;
     posy = pos.y;
+    var side=sqSide;
 
     socket.emit('drawSquare',{
+        sq:side,
         colour:color,
         positionx:posx,
         positiony:posy
@@ -114,14 +148,18 @@ function reset(event){
 
 	context.fillStyle="white";
 	context.fillRect(0,0,canvas.height,canvas.width);
+
+    
 }
 
 function drawRect(event){
+  
+
     var pos = getMousePos(canvas, event);
     posx = pos.x;
     posy = pos.y;
-    var height=$('#height').val();
-    var width=$('#width').val();
+    var height=recthei;
+    var width=rectwid;
 
     socket.emit('drawRect',{
         colour:color,
@@ -136,7 +174,7 @@ function Circle(event){
     var pos = getMousePos(canvas, event);
     posx = pos.x;
     posy = pos.y;
-    var radius=$('#radius').val();
+    var radius=cirRad;
     socket.emit('drawCircle',{
         colour:color,
         positionx:posx,
@@ -148,9 +186,11 @@ function Circle(event){
 function triangle (event) {
 	var pos = getMousePos(canvas, event);
     posx = pos.x;
-    posy = pos.y;   
+    posy = pos.y;  
+    var hei=triHei;
 
     socket.emit('drawTriangle',{
+        tri:hei,
         colour:color,
         positionx:posx,
         positiony:posy,
